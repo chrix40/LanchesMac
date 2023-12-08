@@ -17,6 +17,25 @@ html {
   min-height: 100%;
 }
 
+.horarioFuncionamento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+    line-height: 0;
+    color: #fff !important;
+    background: red !important;
+    margin-right: 10px !important;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.menu-img {
+    height: 236px !important;
+}
+
 body {
   margin-bottom: 60px;
 }

@@ -1,0 +1,56 @@
+﻿@model CarrinhoCompraViewModel;
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="d-flex mb-2 justify-contenter-center align-items-center">
+                <img src="~/images/Full-Cart-icon.png" style="width: auto!important; height: auto !important;" />
+                <h4 class="ms-2"> Seu carrinho de compras: </h4>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead class="thead">
+                <tr>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Lanche</th>
+                    <th scope="col" class="text-end">Preço</th>
+                    <th scope="col" class="text-end">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CarrinhoCompra.CarrinhoCompraItems)
+                {
+                    <tr>
+                        <td class="text-center">@item.Quantidade</td>
+                        <td class="text-center">@item.Lanche.Nome</td>
+                        <td class="text-center">@item.Lanche.Preco.ToString("c")</td>
+                        <td class="text-center">
+                            @((item.Quantidade * item.Lanche.Preco).ToString("c"))
+                        </td>
+                        
+                        <td class="text-center">
+                            <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra"
+                                asp-route-LancheId="@item.Lanche.Id"><img src="~/images/delete.png" />
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-end">Total: </td>
+                    <td class="text-center">
+                        @Model.CarrinhoCompraTotal.ToString("c")
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center">
+            <div class="btn-group">
+                <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+                &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-success" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,7 +1,13 @@
 ﻿@model Lanche;
-
+<style>
+    .img-itens {
+        max-height: 250px !important;
+        min-height: 250px !important;
+        object-fit: contain !important;
+    }
+</style>
 <div class="col-sm-4 col-md-4 col-lg-4">
-    <p><img src="@Model.ImagemUrl" class="img-fluid" style="height: 250px !important;" /></p>
+    <p><img src="@Model.ImagemUrl" class="img-fluid img-itens" /></p>
     <p>Preço: @Model.Preco.ToString("c")</p>
     <h4>Lanche: @Model.Nome</h4>
     <p>Lanche: @Model.DescricaoCurta</p>

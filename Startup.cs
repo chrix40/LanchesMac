@@ -16,12 +16,18 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllersWithViews();
         services.AddMvc();
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+        
         services.AddTransient<ILancheRepository, LancheRepository>();
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
+        services.AddControllersWithViews();
+         
+        services.AddMemoryCache();
+        services.AddSession();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,8 +44,8 @@ public class Startup
     app.UseStaticFiles();
 
     app.UseRouting();
-
     app.UseAuthorization();
+    app.UseSession();
 
     app.UseEndpoints(endpoints =>
     {
