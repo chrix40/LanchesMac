@@ -8,12 +8,12 @@
 </style>
 <div class="col-sm-4 col-md-4 col-lg-4">
     <p><img src="@Model.ImagemUrl" class="img-fluid img-itens" /></p>
-    <p>Preço: @Model.Preco.ToString("c")</p>
-    <h4>Lanche: @Model.Nome</h4>
-    <a asp-controller="Lanche" asp-action="Details" asp-route-id="@Model.Id">@Model.Nome</a>
-    <p>Lanche: @Model.DescricaoCurta</p>
+    <p class="text-white">Preço: @Model.Preco.ToString("c")</p>
+    <h4 class="text-white">Lanche: @Model.Nome</h4>
+    <a asp-controller="Lanche" class="text-white" asp-action="Details" asp-route-id="@Model.Id">@Model.Nome</a>
+    <p class="text-white">Lanche: @Model.DescricaoCurta</p>
     <div>
-        <p class="button">
+        <p class="button text-white">
             <a class="btn btn-danger" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-lancheid="@Model.Id">
                 Adicionar
             </a>
