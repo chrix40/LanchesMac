@@ -15,15 +15,15 @@ namespace LanchesMac.Components
 
         public IViewComponentResult Invoke()
         {
-            //var itens = _carrinhoCompra.GetCarrinhoCompraItems();
-            //_carrinhoCompra.CarrinhoCompraItems = itens;    
+            var itens = _carrinhoCompra.GetCarrinhoCompraItems();
+            _carrinhoCompra.CarrinhoCompraItems = itens;
 
-            var itens = new List<CarrinhoCompraItem>()
-            {
-                new CarrinhoCompraItem(),
-                new CarrinhoCompraItem()
-            };
-            _carrinhoCompra.CarrinhoCompraItems = itens;    
+            //var itens = new List<CarrinhoCompraItem>()
+            //{
+            //    new CarrinhoCompraItem(),
+            //    new CarrinhoCompraItem()
+            //};
+            //_carrinhoCompra.CarrinhoCompraItems = itens;    
 
             var carrinhoCompraVM = new CarrinhoCompraViewModel
             {

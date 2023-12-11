@@ -14,7 +14,7 @@
     <p>Lanche: @Model.DescricaoCurta</p>
     <div>
         <p class="button">
-            <a class="btn btn-danger" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-id="@Model.Id">
+            <a class="btn btn-danger" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-lancheid="@Model.Id">
                 Adicionar
             </a>
         </p>
