@@ -4,8 +4,8 @@
 *@
 
 <section id="hero" class="hero d-flex align-items-center mb-5">
-    <div class="container">
-        <div class="row justify-content-between gy-5">
+    <div class="container" data-aos="fade-up">
+        <div class="row justify-content-between gy-5" data-aos="fade-up" data-aos-delay="200">
             <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
                 <h2 data-aos="fade-up" class="text-white">Experimente o melhor<br>de porto velho.</h2>
                 <p data-aos="fade-up" class="text-white" data-aos-delay="100">Bem-vindo ao Bomba Lanches, Experimente nossos hambúrgueres regionais como o X-Caboclo e o X-Beradeiro. Uma explosão de sabores em cada mordida. Venha saborear conosco!</p>
@@ -19,14 +19,14 @@
             </div>
         </div>
     </div>
-</section><!-- End Hero Section -->
+</section>
 
-
-<h2 class="mt-5">Os preferidos da semana</h2>
-
-<div class="row">
-    @foreach(var lanche in Model.LanchesPreferidos)
-    {
-        <partial name ="_LanchesResumo" for="@lanche" />
-    }    
-</div>
+<section >
+    <h2 class="mt-5">Os preferidos da semana</h2>
+    <div class="">
+        @foreach (var lanche in Model.LanchesPreferidos)
+        {
+            <partial name="_LanchesResumo" for="@lanche" />
+        }
+    </div>
+</section>

@@ -24,52 +24,180 @@
     <link href="~/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="~/css/main.css" rel="stylesheet">
+    
 </head>
+
 <body class="bg-dark">
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow mt-2 mb-2">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LanchesMac</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item ms-2">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item ms-2 me-3">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
-                        </li>
-                        @await Component.InvokeAsync("CategoriaMenu")
-                    </ul>
-                    <form class="navbar-form navbar-right" asp-controller="Lanche" asp-action="Search" method="get">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Procurar produto" name="searchString" value="@ViewData["searchString"]" />
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <a href="@Url.Action("Index", "Home")" class="logo d-flex align-items-center me-auto me-lg-0">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <!-- <img src="~/images/logo.png" alt=""> -->
+                <h1>Bomba Lanches<span>.</span></h1>
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    @*                    <li><a href="@Url.Action("Index", "Home")">Início</a></li>
+                    *@
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    @*<li><a href="#events">Eventos</a></li>*@
+
+                    @*                    <li><a href="#chefs">Chefs</a></li>
+                    *@
+                    <li><a href="#gallery">Galeria</a></li>
+
+                    <li class="dropdown">
+                        <a href="#"><span class="text-danger">Promoções</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                        <ul>
+                            <li><a href="#menu-breakfast">Café da manhã</a></li>
+                            <li class="dropdown">
+                                <a href="#"><span class="text-danger">Combos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                                <ul>
+                                    <li><a href="#">Artesanais</a></li>
+                                    <li><a href="#">Sanduíches</a></li>
+                                    <li><a href="#">Cachorro quente</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Artesanais</a></li>
+                            <li><a href="#">Sanduíches</a></li>
+                            <li><a href="#">Cachorro quente</a></li>
+                            <li><a href="#">Bebidas</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav><!-- .navbar -->
+            @*            <a class="btn-book-a-table" href="#menu">Cardápio</a>
+            *@
+            <div class="m-auto">
+                <div class="m-auto container-fluid">
+                    <div class="d-flex col-md-12 justify-content-center">
+                        <div class="info-item d-inline-flex align-items-center">
+                            <i class="icon bi bi-clock flex-shrink-0 horarioFuncionamento"></i>
+                            <strong style="margin-right: 10px;">Status: </strong>
+                            @{
+                                var dayOfWeek = DateTime.Now;
+                                TimeSpan now = DateTime.Now.TimeOfDay;
+                                DateTime HourOpen = new DateTime(2023, 12, 12, 17, 30, 00);
+                                DateTime HourClosed = new DateTime(2023, 12, 12, 23, 55, 00);
+                                TimeSpan openTime = HourOpen.TimeOfDay;
+                                TimeSpan closeTime = HourClosed.TimeOfDay;
+                                var isWeek = "mentira";
+                                var isWeekEnd = "mentira";
+                                if (dayOfWeek.DayOfWeek.ToString() != "Sunday")
+                                {
+                                    isWeek = "verdade";
+                                }
+                                else
+                                {
+                                    isWeekEnd = "verdade";
+                                }
+                                if (now >= openTime && now <= closeTime && isWeekEnd == "mentira")
+                                {
+                                    <strong class="text-success ml-2 d-flex align-itens-center">Aberto</strong>
+                                }
+                                else
+                                {
+                                    <strong class="text-danger ml-2 d-flex align-itens-center"> Fechado</strong>
+                                }
+                            }
+
                         </div>
-                    </form>
-                    <div class="d-flex align-items-center ms-3">
-                        @await Component.InvokeAsync("CarrinhoCompraResumo")
                     </div>
                 </div>
             </div>
-        </nav>
-    </header>
+            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+        </div>
+    </header><!-- End Header -->
     <div class="container bg-dark">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 mb-5">
             @RenderBody()
         </main>
+        <footer id="footer" class="border-top footer fixed-bottom text-muted">
+            <div class="container">
+                <div class="row gy-3">
+                    <div class="col-lg-3 col-md-6 d-flex">
+                        <i class="bi bi-geo-alt icon"></i>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>
+                                Av. 7 de Setembro, 1449<br />Nossa Sra. das Graças<br>
+                                Porto Velho, RO 76804-123<br>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links d-flex">
+                        <i class="bi bi-telephone icon"></i>
+                        <div>
+                            <h4>Reservas</h4>
+                            <p>
+                                <strong>Contato:</strong> (69) 99220-3204<br>
+                                <strong>Email:</strong> bombalanches203@gmail.com<br>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links d-flex">
+                        <i class="bi bi-clock icon"></i>
+                        <div>
+                            <h4>Horários</h4>
+                            <p>
+                                <strong>Segunda à Sábado: 17:30AM</strong> - 23:55PM<br>
+                                Domingo: Fechado
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Redes sociais</h4>
+                        <div class="social-links d-flex">
+                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            @* <div class="container">
+            <div class="copyright">
+            &copy; Copyright <strong><span>Christian</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+
+            </div>
+            </div>
+            *@
+        </footer> <!-- End Footer -->
     </div>
 
-    <footer class="border-top footer bg-dark text-muted">
-        <div class="container">
-            &copy; 2023 - LanchesMac - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/aos/aos.js"></script>
+    <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/js/main.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
