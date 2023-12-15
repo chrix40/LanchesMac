@@ -1,5 +1,70 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model CategoriaLancheViewModel
+
+<main id="main">
+
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5">
+                <h2>Nossos lanches.</h2>
+                <p class="text-white">Confira nosso<span> Cardápio</span></p>
+            </div>
+
+            <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                @foreach (var item in Model.ListaCategorias)
+                {
+                    <li class="nav-item categoria" data-id="@item.Id">
+                        <a class="nav-link active show">
+                            <h4>@item.CategoriaNome</h4>
+                        </a>
+                    </li>
+                }
+            </ul>
+            <div id="ListaLanches" class="row mt-5">
+                @foreach (var lanche in Model.ListaLanche)
+                {
+                    <partial name="_LanchesResumo" for="@lanche" />
+                }
+            </div>
+        </div>
+    </section><!-- End Menu Section -->
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".categoria").on("click", function (e) {
+            e.preventDefault();
+
+            // Obter o ID da categoria clicada
+            var categoriaId = $(this).data("id");
+
+            // Fazer a solicitação Ajax
+            $.ajax({
+                url: "/Lanche/CategoriaEscolhida",
+                type: "GET",
+                data: { id: categoriaId },
+                success: function (data) {
+                    // Atualizar dinamicamente os resultados da categoria
+                    $("#ListaLanches").html(data);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
+<script>
+    function capturarIdCategoria(elemento) {
+        var categoriaId = elemento.getAttribute("data-id");
+        console.log("ID da categoria clicada: " + categoriaId);
+
+        // Aqui você pode fazer o que quiser com o ID, como imprimir no console
+        console.log("ID da categoria clicada: " + categoriaId);
+
+        // Chamar a função para fazer a solicitação Ajax
+        carregarResultadosDaCategoria(categoriaId);
+    }
+</script>

@@ -1,0 +1,163 @@
+﻿@model List<Categoria>
+
+<main id="main">
+
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Nossos lanches.</h2>
+                <p class="text-white">Confira nosso<span> Cardápio</span></p>
+            </div>
+
+            <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+
+                @foreach (var item in Model)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
+                            <h4>@item.CategoriaNome</h4>
+                        </a>
+                    </li>
+                }
+                @*                @foreach (var item in Model)
+                {
+                <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+
+                <div class="tab-pane fade active show" id="menu-starters">
+
+                <div class="tab-header text-center">
+                <p>Menu</p>
+                <h3>Artesanais</h3>
+                </div>
+                <div class="row gy-5">
+                <div class="col-lg-4 menu-item">
+                <a href="@item.ImagemUrl" class="glightbox"><img src="@item.ImagemUrl" class="menu-img img-fluid" alt=""></a>
+                <h4>@item.Nome</h4>
+                <p class="ingredients">
+                @item.DescricaoCurta
+                </p>
+                <p class="price">
+                @item.Preco.ToString("c")
+                </p>
+                <a asp-controller="Lanche" class="text-white" asp-action="Details" asp-route-id="@item.Id">@item.Nome</a>
+                <div>
+                <p class="button text-white">
+                <a class="btn btn-danger" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-lancheid="@item.Id">
+                Adicionar
+                </a>
+                </p>
+                </div>
+                </div>
+                <!-- Menu Item -->
+                </div>
+                </div><!-- End Starter Menu Content -->
+
+                <div class="tab-pane fade" id="menu-breakfast">
+
+                <div class="tab-header text-center">
+                <p>Menu</p>
+                <h3>Café da manhã</h3>
+                </div>
+
+                <div class="row gy-5">
+                <div class="row gy-5">
+                <div class="col-lg-4 menu-item">
+                <a href="@item.ImagemUrl" class="glightbox"><img src="@item.ImagemUrl" class="menu-img img-fluid" alt=""></a>
+                <h4>@item.Nome</h4>
+                <p class="ingredients">
+                @item.DescricaoCurta
+                </p>
+                <p class="price">
+                @item.Preco.ToString("c")
+                </p>
+                <a asp-controller="Lanche" class="text-white" asp-action="Details" asp-route-id="@item.Id">@item.Nome</a>
+                <div>
+                <p class="button text-white">
+                <a class="btn btn-danger" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-lancheid="@item.Id">
+                Adicionar
+                </a>
+                </p>
+                </div>
+                </div>
+                <!-- Menu Item -->
+                </div><!-- Menu Item -->
+
+                </div>
+                </div><!-- End Breakfast Menu Content -->
+
+                <div class="tab-pane fade" id="menu-lunch">
+
+                <div class="tab-header text-center">
+                <p>Menu</p>
+                <h3>Lanches tradicionais</h3>
+                </div>
+
+                <div class="row gy-5">
+
+                <div class="col-lg-4 menu-item">
+                <a href="~/images/Burguers/cheeseburguer2.png" class="glightbox"><img src="~/images/Burguers/cheeseburguer2.png" class="menu-img img-fluid" alt=""></a>
+                <h4>Magnam Tiste</h4>
+                <p class="ingredients">
+                Pão bola com gergelim, hambúrguer duplo, mussarela, queijo cheddar,  picles, cebola caramelizada, deliciosas fatias de bacon.
+                </p>
+                <p class="price">
+                R$21,99
+                </p>
+                </div><!-- Menu Item -->
+
+                </div>
+                </div><!-- End Lunch Menu Content -->
+
+                <div class="tab-pane fade" id="menu-dinner">
+
+                <div class="tab-header text-center">
+                <p>Menu</p>
+                <h3>Lanches Regionais</h3>
+                </div>
+
+                <div class="row gy-5">
+
+                <div class="col-lg-4 menu-item">
+                <a href="~/images/Burguers/cheeseburguer2.png" class="glightbox"><img src="~/images/Burguers/cheeseburguer2.png" class="menu-img img-fluid" alt=""></a>
+                <h4>Magnam Tiste</h4>
+                <p class="ingredients">
+                Pão bola com gergelim, hambúrguer duplo, mussarela, queijo cheddar,  picles, cebola caramelizada, deliciosas fatias de bacon.
+                </p>
+                <p class="price">
+                R$21,99
+                </p>
+                </div><!-- Menu Item -->
+
+                </div>
+                </div><!-- End Dinner Menu Content -->
+
+                </div>
+
+
+                }
+                *@                @*
+                <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
+                <h4>Café da manhã</h4>
+                </a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
+                <h4>Lanches tradicionais</h4>
+                </a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
+                <h4>Lanches Regionais</h4>
+                </a>
+                </li>*@
+
+            </ul>
+
+
+        </div>
+    </section><!-- End Menu Section -->
+</main>

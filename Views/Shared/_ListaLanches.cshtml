@@ -1,0 +1,6 @@
+﻿@model List<Lanche>
+
+@foreach (var lanche in Model)
+{
+    @await Html.PartialAsync("_LanchesResumo", lanche)
+}

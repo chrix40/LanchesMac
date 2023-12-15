@@ -24,7 +24,23 @@
     <link href="~/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="~/css/main.css" rel="stylesheet">
-    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        main {
+            flex: 1;
+            min-height: calc(100vh - 80px); /* Subtrai a altura do footer (80px no exemplo) */
+        }
+
+        #footer {
+            margin-top: auto;
+        }
+    </style>
 </head>
 
 <body class="bg-dark">
@@ -117,8 +133,10 @@
     <div class="container bg-dark">
         <main role="main" class="pb-3 mb-5">
             @RenderBody()
-        </main>
-        <footer id="footer" class="border-top footer fixed-bottom text-muted">
+        </main>        
+    </div>
+    <div class="m">
+        <footer id="footer" class="footer text-muted">
             <div class="container">
                 <div class="row gy-3">
                     <div class="col-lg-3 col-md-6 d-flex">
@@ -167,17 +185,8 @@
 
                 </div>
             </div>
+        </footer>
 
-            @* <div class="container">
-            <div class="copyright">
-            &copy; Copyright <strong><span>Christian</span></strong>. All Rights Reserved
-            </div>
-            <div class="credits">
-
-            </div>
-            </div>
-            *@
-        </footer> <!-- End Footer -->
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

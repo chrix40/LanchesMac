@@ -1,25 +1,25 @@
 ﻿@model Lanche;
 
-<div class="container">
-    <div class="row">
-        <div class="card">
-            <div class="text-center">
-                <img src="@Model.ImagemUrl" class="img-fluid" alt="">
-            </div>
-            <div class="card-block">
-                <h5 class="card-title">@Model.Nome</h5>
-                <p class="card-text"><h5>@Model.DescricaoDetalhada</h5></p>
-                <p class="btn btn-group align-content-lg-end">
-                    <a asp-controller="Lanche" asp-action="List" class="btn btn-outline-info ms-2 me-2">Ver lanches</a>
-                    <a asp-controller="CarrinhoCompra" id="cartButton" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-lancheid="@Model.Id"
-                       class="btn btn-primary">Adicionar</a>
-                </p>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="card mt-5">
+                <div class="text-center">
+                    <img src="@Model.ImagemUrl" class="img-fluid" alt="">
+                </div>
+                <div class="card-block">
+                    <h5 class="card-title">@Model.Nome</h5>
+                    <p class="card-text"><h5>@Model.DescricaoDetalhada</h5></p>
+                    <p class="btn btn-group align-content-lg-end">
+                        <a asp-controller="Lanche" asp-action="List" class="btn btn-outline-info ms-2 me-2">Ver lanches</a>
+                        <a asp-controller="CarrinhoCompra" id="cartButton" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-lancheid="@Model.Id"
+                           class="btn btn-primary">Adicionar</a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
+</section>
 
 
 @*<div class="container">

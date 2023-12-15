@@ -8,15 +8,21 @@ namespace LanchesMac.Controllers
     public class LancheController : Controller
     {
         private readonly ILancheRepository _lancheRepository;
+        private readonly ICategoriaRepository _categoriaRepository;
 
-        public LancheController(ILancheRepository lancheRepository)
+        public LancheController(ILancheRepository lancheRepository, ICategoriaRepository categoriaRepository)
         {
             _lancheRepository = lancheRepository;
+            _categoriaRepository = categoriaRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            CategoriaLancheViewModel categoriaLanches = new CategoriaLancheViewModel();
+
+            categoriaLanches.ListaCategorias = _categoriaRepository.Categorias.ToList();
+            categoriaLanches.ListaLanche = _lancheRepository.Lanches.ToList();
+            return View(categoriaLanches);
         }
         public IActionResult List(string categoria)
         {
@@ -38,6 +44,17 @@ namespace LanchesMac.Controllers
                 CategoriaAtual = categoriaAtual
             };
             return View(lanchesListViewModel);
+        }
+
+        public async Task<ActionResult> CategoriaEscolhida(int id)
+        {
+            var categoriaEscolhida = _lancheRepository.Lanches.Where(l => l.CategoriaId == id).ToList();
+            if (categoriaEscolhida != null)
+            {
+                return PartialView("_ListaLanches", categoriaEscolhida);
+            }
+            return View();
+
         }
         public IActionResult Details(int Id)
         {
