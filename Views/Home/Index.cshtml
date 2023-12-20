@@ -18,9 +18,12 @@
     </div>
 </section>
 
-<section >
-    <h2 class="mt-5">Os preferidos da semana</h2>
-    <div class="">
+<section>
+    <div class="section-header text-white mt-5 mb-3" data-aos="fade-up">
+        <h2>Nossos lanches.</h2>
+        <p>Os <span>preferidos</span> da semana.</p>
+    </div>
+    <div class="row" data-aos="fade-up" data-aos-delay="200">
         @foreach (var lanche in Model.LanchesPreferidos)
         {
             <partial name="_LanchesResumo" for="@lanche" />

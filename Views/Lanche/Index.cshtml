@@ -20,7 +20,7 @@
                     </li>
                 }
             </ul>
-            <div id="ListaLanches" class="row mt-5">
+            <div id="ListaLanches" class="row mt-5" data-aos="fade-up">
                 @foreach (var lanche in Model.ListaLanche)
                 {
                     <partial name="_LanchesResumo" for="@lanche" />
