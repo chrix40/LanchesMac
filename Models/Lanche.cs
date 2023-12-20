@@ -35,11 +35,11 @@ namespace LanchesMac.Models
         public decimal Preco { get; set; }
 
         [Display(Name = "Caminho Imagem Normal")]
-        [StringLength(200, ErrorMessage = "O {0} deve ter no máximo {1} caracteres")]
+        [StringLength(1000, ErrorMessage = "O {0} deve ter no máximo {1} caracteres")]
         public string ImagemUrl { get; set; }
 
         [Display(Name = "Caminho Imagem Miniatura")]
-        [StringLength(200, ErrorMessage = "O {0} deve ter no máximo {1} caracteres")]
+        [StringLength(1000, ErrorMessage = "O {0} deve ter no máximo {1} caracteres")]
         public string ImagemThumbnailUrl { get; set; }
 
         [Display(Name = "Preferido?")]

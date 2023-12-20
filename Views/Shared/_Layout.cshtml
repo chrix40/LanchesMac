@@ -58,7 +58,7 @@
                     @*                    <li><a href="@Url.Action("Index", "Home")">Início</a></li>
                     *@
                     <li><a href="#about">Sobre</a></li>
-                    <li><a href="#menu">Menu</a></li>
+                    <li><a asp-action="Index" asp-controller="Lanche">Menu</a></li>
                     @*<li><a href="#events">Eventos</a></li>*@
 
                     @*                    <li><a href="#chefs">Chefs</a></li>
@@ -83,7 +83,7 @@
                             <li><a href="#">Bebidas</a></li>
                         </ul>
                     </li>
-                    <li><a href="#contact">Contato</a></li>
+                    <li><a asp-action="Index" asp-controller="Contato">Contato</a></li>
                 </ul>
             </nav><!-- .navbar -->
             @*            <a class="btn-book-a-table" href="#menu">Cardápio</a>
@@ -125,6 +125,8 @@
                     </div>
                 </div>
             </div>
+            @await Component.InvokeAsync("CarrinhoCompraResumo")
+
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
