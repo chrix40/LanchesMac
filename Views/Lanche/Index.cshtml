@@ -1,5 +1,11 @@
 ﻿@model CategoriaLancheViewModel
 
+<style>
+    .menu .nav-link:hover {
+        color: #fff !important;
+/*        border-color: #fff !important;
+*/    }
+</style>
 <main id="main">
 
     <!-- ======= Menu Section ======= -->
@@ -14,7 +20,7 @@
                 @foreach (var item in Model.ListaCategorias)
                 {
                     <li class="nav-item categoria" data-id="@item.Id">
-                        <a class="nav-link active show">
+                        <a class="nav-link bg-dark active show">
                             <h4>@item.CategoriaNome</h4>
                         </a>
                     </li>

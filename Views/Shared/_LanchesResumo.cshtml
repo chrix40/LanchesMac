@@ -1,20 +1,22 @@
 ﻿@model Lanche;
 <style>
     .img-itens {
-        max-height: 250px !important;
-        min-height: 250px !important;
-        object-fit: contain !important;
+        object-fit: cover !important;
     }
+
 </style>
 
 @if (Model != null)
 {
-    <div class="col-sm-4 col-md-4 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-        <p><img src="@Model.ImagemUrl" class="img-fluid img-itens" /></p>
-        <p class="text-white">Preço: @Model.Preco.ToString("c")</p>
+    <div class="col-sm-4 col-md-4 col-lg-4 menu-item" data-aos="fade-up" data-aos-delay="200">
+        <a href="@Model.ImagemUrl" class="glightbox lanche-image d-flex justify-content-center" data-gallery="glightbox-gallery-@Model.Id">
+            <img src="@Model.ImagemUrl" class="img-fluid menu-img img-itens" />
+        </a>
+        @*<p class="d-flex justify-content-center glightbox"><img src="@Model.ImagemUrl" class="img-fluid menu-img" /></p>*@
+        <p class="text-white price">Preço: @Model.Preco.ToString("c")</p>
         <h4 class="text-white">Lanche: @Model.Nome</h4>
         <a asp-controller="Lanche" class="text-white" asp-action="Details" asp-route-id="@Model.Id">@Model.Nome</a>
-        <p class="text-white">Lanche: @Model.DescricaoCurta</p>
+        <p class="text-white ingredientss">Lanche: @Model.DescricaoCurta</p>
         <div>
             <p class="button text-white">
                 <a class="btn btn-danger" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-lancheid="@Model.Id">
@@ -23,4 +25,16 @@
             </p>
         </div>
     </div>
+    <!-- Add this just before the closing </body> tag in your layout file -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = GLightbox({
+                selector: '.lanche-image',
+                type: 'image' // ajustado para vir somente imagens, algumas estavam sendo renderizadas como video.
+            });
+        });
+    </script>
+
 }
+
+

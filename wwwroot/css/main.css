@@ -862,12 +862,13 @@ section {
 }
 
 .menu .nav-link:hover {
-  color: var(--color-primary);
+    color: #fff !important;
+    border-color: #fff !important;
 }
 
 .menu .nav-link.active {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+    color: #fff !important;
+    border-color: #fff !important;
 }
 
 .menu .tab-content .tab-header {
@@ -1530,11 +1531,13 @@ section {
 }
 
 .hero .btn-watch-video {
-  font-size: 16px;
-  transition: 0.5s;
-  margin-left: 25px;
-  color: var(--font-secondary);
-  font-weight: 600;
+    font-size: 16px;
+    transition: 0.5s;
+    margin-left: 25px;
+    color: var(--font-secondary);
+    font-weight: 600;
+    border-radius: 20px 20px !important;
+    border: 5px solid transparent !important;
 }
 
 .hero .btn-watch-video i {
