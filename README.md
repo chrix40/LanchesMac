@@ -1,5 +1,7 @@
 # Sistema de Lanches 🍔
-Sistema de Lanches feito em .NET 7 com duas camadas, de usuário e de administrador.
+Sistema de Lanches feito em .NET 7 com duas camadas:
+- Usuário
+- Administrador
 
 ## Tecnologias e Ferramentas utilizadas:
 - C# 11.0
